@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
+from .models import Chat,Room
 import json
 
 def index(request):
