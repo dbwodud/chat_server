@@ -9,6 +9,11 @@
     What chat room would you like to enter?<br/>
     <input id="room-name-input" type="text" size="100"/><br/>
     <input id="room-name-submit" type="button" value="Enter"/>
+    <h1>Room List</h1>
+
+    {%for room in rooms%}
+        <a href="{{room.room_name}}">{{room.room_name}}</a><br/>
+    {%endfor%}
 
     <script>
         document.querySelector('#room-name-input').focus();
