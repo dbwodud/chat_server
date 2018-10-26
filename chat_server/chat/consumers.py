@@ -1,12 +1,19 @@
 # chat/consumers.py
 # chat/consumers.py
 from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.db import database_sync_to_async
 import json
+from .models import Room
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
+    @database_sync_to_async
+    def get_name(self):
+        return Room.objects.all()[0].room_name 
+
     async def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        # self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_name = await self.get_name()
         self.room_group_name = 'chat_%s' % self.room_name
 
         # Join room group
