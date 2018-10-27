@@ -12,6 +12,9 @@
 </body>
 <script>
     var roomName = {{ room_name_json }};
+    {%for chat in chats%}
+        document.querySelector('#chat-log').value += ("{{chat.chat}}" + '\n');
+    {%endfor%}
 
     var chatSocket = new WebSocket(
         'ws://' + window.location.host +
