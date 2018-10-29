@@ -1,0 +1,9 @@
+<html>
+    <head>
+    </head>
+    <body>
+        {%for user in user_list%}
+            <a href="/chat/{{user.id}}/">{{user.username}}></a>
+        {%endfor%}
+    </body>
+</html>
